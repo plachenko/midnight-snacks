@@ -1,5 +1,5 @@
 <template>
-  <h1>The <a style="text-decoration: none; color: rgb(28, 126, 218); font-weight: bold" target="_blank" href="http://midnightsnacks.fm">Midnight Snacks</a> archive</h1>
+  <h1>The <a class="header" target="_blank" href="http://midnightsnacks.fm">Midnight Snacks</a> archive</h1>
   <audio :src="currentShow.url" controls autoplay @ended="ended"></audio>
 
   <div>
@@ -91,7 +91,17 @@ body, html{
   text-align: center;
   color: #2c3e50;
 }
+.header{
+  text-decoration: none; 
+  color: rgb(28, 126, 218); 
+  font-weight: bold
+  }
+  .header:hover{
+    color: rgb(28, 180, 218);
+    }
+
 audio{
+  outline: none;
   width: 100%;
   position: sticky; 
   top: 0px; 
