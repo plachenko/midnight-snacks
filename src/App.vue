@@ -11,7 +11,11 @@
       @click="play(show)"
       >
       <div>
-        <span class="number"><a :href="`http://midnightsnacks.fm/show/${show.number}/${show.date}`" target="_blank">Show {{show.number}}</a></span>
+        <span class="number">
+          <a :href="`http://midnightsnacks.fm/show/${show.number}/${show.date}`" target="_blank">
+            Show #{{String(show.number).padStart(padNum, '0')}}
+          </a>
+        </span>
         <span class="date">{{ show.date }}</span>
       </div>
     </div>
@@ -29,6 +33,11 @@ export default {
       shows: [],
       currentShow: {}
     }
+  },
+  computed:{
+    padNum(){
+      return this.shows.length.toString().length;
+    },
   },
   mounted() {
     const today = new moment();
