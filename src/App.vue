@@ -12,12 +12,13 @@
       >
       <div>
         <span class="number">
-          <a :href="`http://midnightsnacks.fm/show/${show.number}/${show.date}`" target="_blank">
+          <a :href="`http://midnightsnacks.fm/show/${show.number}/${show.date}`" @click="linkClick" target="_blank">
             Show #{{String(show.number).padStart(padNum, '0')}}
           </a>
         </span>
         <span class="date">{{ show.date }}</span>
       </div>
+      <div class="selectBorder" style=""></div>
     </div>
   </div>
 
@@ -69,7 +70,6 @@ export default {
   methods: {
     play(show){
       this.currentShow = show;
-      console.log()
     },
     ended(){
       const showIdx = this.currentShow.number - 11; 
@@ -95,24 +95,32 @@ audio{
   width: 100%;
   position: sticky; 
   top: 0px; 
-  background-color:#FFF
+  background-color:#F1F3F4;
+  z-index: 9999;
 }
 .show{
   padding: 10px 35px; 
-  background-color:#CCC; 
-  margin: 3px 0px;
+  position: relative;
+  background-color: #FFF;
+  /* margin: 3px 0px; */
+  border-bottom: 2px solid #CCC;
   box-sizing: border-box;
   }
   .show a {
     text-decoration: none;
     font-weight: bold;
-    padding: 0px 10px;
+    padding: 10px 10px 10px 40px;
     display: inline-block;
     box-sizing: border-box;
     color: rgb(28, 126, 218);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-right: 2px solid #AAA;
   }
   .show a:hover{
-    background-color: #FFF;
+    background-color:#DDD; 
+    color: rgb(28, 180, 218);
   }
   .show .number {
     display: block;
@@ -125,11 +133,39 @@ audio{
 
   .show:hover{
     cursor: pointer;
-    background-color:#333; 
-    color: #FFF;
+    background-color:#EFEFEF; 
+    /* box-shadow: 0px 0px 2px; */
+    font-weight: bold;
     }
 
   .current{
-    border: #F00 3px solid;
+    font-weight: bold;
+    position: sticky;
+    background-color:#EEE; 
+    }
+    .current .selectBorder{
+      display: block;
+    }
+
+    .current a{
+      z-index: 9999;
+      top: -1px;
+      padding: 8px 10px 8px 40px;
+      border-top: #AAA solid;
+      border-bottom: #AAA solid;
+      box-sizing: border-box;
+    }
+
+  .selectBorder{
+    display: none;
+    position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    box-sizing: border-box; 
+    width: 100%; 
+    height: 100%; 
+    border: #AAA 2px solid;
+    border-right: none;
+    border-left: none;
   }
 </style>
