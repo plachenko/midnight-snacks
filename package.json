@@ -5,10 +5,13 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d dist",
+    "bnd": "npm run build && npm run deploy"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "moment": "^2.29.0",
     "vue": "^3.0.0-0"
   },
   "devDependencies": {
